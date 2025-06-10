@@ -2,6 +2,7 @@ import os
 import sys
 import shutil
 from colorama import init, Fore, Style
+from updater import check_and_update
 import time
 
 os.system("title iS-Tool Selector")
@@ -53,12 +54,12 @@ banner_art = r"""
  ░        ░                  ░ ░      ░ ░      ░  ░      ░  
 """
 
-github_link = f"{WHITE}                    [ https://github.com/isweat-exe/iSTools ]{PURPLE_NORMAL}"
+version = f"{WHITE}                    [Version : 1.0.0]{PURPLE_NORMAL}"
 
 # Options textes
 option_info_txt = f"{WHITE}Info {PURPLE_DARK}[{WHITE}26{PURPLE_NORMAL}]{PURPLE_NORMAL}"
 option_next_txt = f"{WHITE}{PURPLE_DARK}[{WHITE}27{PURPLE_NORMAL}] {WHITE}Next{PURPLE_NORMAL}"
-option_previous_txt = f"{WHITE}{PURPLE_DARK}[{WHITE}28{PURPLE_NORMAL}] {WHITE}Previous{PURPLE_NORMAL}"
+option_previous_txt = f"{WHITE}Previous {PURPLE_DARK}[{WHITE}28{PURPLE_NORMAL}]"
 option_site_txt = f"{WHITE}Site{PURPLE_NORMAL}"
 exit_option_txt = f"{PURPLE_DARK}[{WHITE}0{PURPLE_NORMAL}] {RED}Exit{PURPLE_NORMAL}"
 
@@ -122,37 +123,37 @@ option_51_txt = f"{PURPLE_DARK}[{WHITE}51{PURPLE_NORMAL}] {WHITE}Comming Soon...
 
 
 
-menu_ascii_1 = f""" ┌─┤ {option_info_txt}                                                                                                {option_next_txt} ├─┐
- ├─┤ {option_site_txt}      ┌──────────────┐                           ┌──────────────┐                        ┌──────────────┐        │
- └─┬───────────┤    {WHITE}Page 1{PURPLE_NORMAL}    ├─────────────┬─────────────┤    {WHITE}Page 2{PURPLE_NORMAL}    ├──────────────┬─────────┤    {WHITE}Page 3{PURPLE_NORMAL}    ├────────┘
-   │           └──────────────┘             │             └──────────────┘              │         └──────────────┘
-   ├─ {option_01_txt}           ├─ {option_11_txt}              ├─ {option_20_txt}
-   ├─ {option_02_txt}           ├─ {option_12_txt}              ├─ {option_21_txt}
-   ├─ {option_03_txt}           ├─ {option_13_txt}              ├─ {option_22_txt}
-   ├─ {option_04_txt}           ├─ {option_14_txt}              ├─ {option_23_txt}
-   ├─ {option_05_txt}           ├─ {option_15_txt}              ├─ {option_24_txt}
-   ├─ {option_06_txt}           ├─ {option_16_txt}              ├─ {option_25_txt}
-   ├─ {option_07_txt}           ├─ {option_17_txt}              │
-   ├─ {option_08_txt}           ├─ {option_18_txt}              │ 
-   ├─ {option_09_txt}           ├─ {option_19_txt}              │        
-   └─ {option_10_txt}           └─ {option_19_txt}              └─ {exit_option_txt}
+menu_ascii_1 = f""" ┌─┤ {option_info_txt}                                                                                             {option_next_txt} ├─┐
+ ├─┤ {option_site_txt}      ┌──────────────┐                          ┌──────────────┐                       ┌──────────────┐       │
+ └─┬───────────┤    {WHITE}Page 1{PURPLE_NORMAL}    ├─────────────┬────────────┤    {WHITE}Page 2{PURPLE_NORMAL}    ├────────────┬──────────┤    {WHITE}Page 3{PURPLE_NORMAL}    ├───────┘
+   │           └──────────────┘             │            └──────────────┘            │          └──────────────┘
+   ├─ {option_01_txt}           ├─ {option_11_txt}           ├─ {option_20_txt}
+   ├─ {option_02_txt}           ├─ {option_12_txt}           ├─ {option_21_txt}
+   ├─ {option_03_txt}           ├─ {option_13_txt}           ├─ {option_22_txt}
+   ├─ {option_04_txt}           ├─ {option_14_txt}           ├─ {option_23_txt}
+   ├─ {option_05_txt}           ├─ {option_15_txt}           ├─ {option_24_txt}
+   ├─ {option_06_txt}           ├─ {option_16_txt}           ├─ {option_25_txt}
+   ├─ {option_07_txt}           ├─ {option_17_txt}           │
+   ├─ {option_08_txt}           ├─ {option_18_txt}           │ 
+   ├─ {option_09_txt}           ├─ {option_19_txt}           │        
+   └─ {option_10_txt}           └─ {option_19_txt}           └─ {exit_option_txt}
 {WHITE}
 """
 
-menu_ascii_2 = f""" ┌─┤ {option_previous_txt}                                                                                            {option_next_txt} ├─┐
- ├─┤ {option_site_txt}      ┌──────────────┐                           ┌──────────────┐                        ┌──────────────┐        │
- └─┬───────────┤    {WHITE}Page 4{PURPLE_NORMAL}    ├─────────────┬─────────────┤    {WHITE}Page 5{PURPLE_NORMAL}    ├──────────────┬─────────┤    {WHITE}Page 6{PURPLE_NORMAL}    ├────────┘
-   │           └──────────────┘             │             └──────────────┘              │         └──────────────┘
-   ├─ {option_26_txt}           ├─ {option_36_txt}              ├─ {option_46_txt}
-   ├─ {option_27_txt}           ├─ {option_37_txt}              ├─ {option_47_txt}
-   ├─ {option_28_txt}           ├─ {option_38_txt}              ├─ {option_48_txt}
-   ├─ {option_29_txt}           ├─ {option_39_txt}              ├─ {option_49_txt}
-   ├─ {option_30_txt}           ├─ {option_40_txt}              ├─ {option_50_txt}
-   ├─ {option_31_txt}           ├─ {option_41_txt}              ├─ {option_51_txt}
-   ├─ {option_32_txt}           ├─ {option_42_txt}              │
-   ├─ {option_33_txt}           ├─ {option_43_txt}              │ 
-   ├─ {option_34_txt}           ├─ {option_44_txt}              │        
-   └─ {option_35_txt}           └─ {option_45_txt}              └─ {exit_option_txt}
+menu_ascii_2 = f""" ┌─┤ {option_previous_txt}                                                                                         {option_next_txt} ├─┐
+ ├─┤ {option_site_txt}      ┌──────────────┐                          ┌──────────────┐                       ┌──────────────┐       │
+ └─┬───────────┤    {WHITE}Page 4{PURPLE_NORMAL}    ├─────────────┬────────────┤    {WHITE}Page 5{PURPLE_NORMAL}    ├────────────┬──────────┤    {WHITE}Page 6{PURPLE_NORMAL}    ├───────┘
+   │           └──────────────┘             │            └──────────────┘            │          └──────────────┘
+   ├─ {option_26_txt}           ├─ {option_36_txt}           ├─ {option_46_txt}
+   ├─ {option_27_txt}           ├─ {option_37_txt}           ├─ {option_47_txt}
+   ├─ {option_28_txt}           ├─ {option_38_txt}           ├─ {option_48_txt}
+   ├─ {option_29_txt}           ├─ {option_39_txt}           ├─ {option_49_txt}
+   ├─ {option_30_txt}           ├─ {option_40_txt}           ├─ {option_50_txt}
+   ├─ {option_31_txt}           ├─ {option_41_txt}           ├─ {option_51_txt}
+   ├─ {option_32_txt}           ├─ {option_42_txt}           │
+   ├─ {option_33_txt}           ├─ {option_43_txt}           │ 
+   ├─ {option_34_txt}           ├─ {option_44_txt}           │        
+   └─ {option_35_txt}           └─ {option_45_txt}           └─ {exit_option_txt}
 {WHITE}
 """
 
@@ -167,13 +168,15 @@ except ModuleNotFoundError as e:
     sys.exit(1)
 
 def main():
+    # Vérification et mise à jour du logiciel
+    check_and_update(auto=True)
     current_page = 1
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
 
         print_with_loading(banner_art, delay=LINE_DELAY, color=PURPLE_VERY_LIGHT + BOLD, center=True)
         print()
-        print_with_loading(github_link, delay=LINE_DELAY, color=PURPLE_NORMAL + BOLD, center=True)
+        print_with_loading(version, delay=LINE_DELAY, color=PURPLE_NORMAL + BOLD, center=True)
         print("\n")
         if current_page == 1:
             print_with_loading(menu_ascii_1, delay=LINE_DELAY, color=PURPLE_NORMAL + BOLD)
