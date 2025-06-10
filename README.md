@@ -1,14 +1,14 @@
 
-<div align="center">
-  <h1>🚀 iS-Tools CLI ( Work In Progress )</h1>
-</div>
+<p align="center">
+  🚀 iS-Tools CLI ( Work In Progress )
+</p>p
 
-<div align="center">
+<p align="center">
   <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
   <img src="https://img.shields.io/badge/status-WIP-orange.svg" />
   <img src="https://img.shields.io/badge/python-3.8%2B-blue.svg" />
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey.svg" />
-</div>
+</p>
 
 ---
 
