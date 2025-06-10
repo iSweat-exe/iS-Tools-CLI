@@ -20,32 +20,70 @@ VERSION_FILE  = "Version.txt"               # fichier dans le repo
 TIMEOUT       = 5                           # s
 DEBUG         = True                        # active les logs debug
 
-RAW_VERSION_URL = (
+RAW_VERSION_URL_PUBLIC = (
     f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{VERSION_FILE}"
 )
 ZIP_URL = (
     f"https://github.com/{REPO}/archive/refs/heads/{BRANCH}.zip"
 )
-# ——————————————————————————————————————————————————————————
+
+GITHUB_API_REPO_URL = f"https://api.github.com/repos/{REPO}"
 
 def debug(msg):
     """Affiche un message de debug si activé"""
     if DEBUG:
         print(f"🐞 [DEBUG] {msg}")
 
-# ╭─────────────────────────────────────────────────────────╮
-# │                     Fonctions internes                  │
-# ╰─────────────────────────────────────────────────────────╯
 def _version_tuple(v: str):
     debug(f"Conversion version '{v}' en tuple")
     return tuple(int(x) for x in v.strip("v").split("."))
 
+def _is_repo_private(token=None):
+    """
+    Interroge l'API GitHub pour savoir si le repo est privé.
+    Si token est donné, l'utilise dans les headers pour auth.
+    """
+    headers = {}
+    if token:
+        headers["Authorization"] = f"token {token}"
+    debug(f"Vérification si repo est privé via API : {GITHUB_API_REPO_URL}")
+    try:
+        r = requests.get(GITHUB_API_REPO_URL, headers=headers, timeout=TIMEOUT)
+        r.raise_for_status()
+        data = r.json()
+        private = data.get("private", False)
+        debug(f"Réponse API : private={private}")
+        return private
+    except Exception as e:
+        debug(f"Erreur lors de la vérification du repo privé : {e}")
+        # En cas d'erreur, on suppose public (pour éviter blocage)
+        return False
+
 def _latest_version_online():
-    debug(f"Requête vers : {RAW_VERSION_URL}")
-    r = requests.get(RAW_VERSION_URL, timeout=TIMEOUT)
-    r.raise_for_status()
-    debug(f"Version trouvée sur le repo : {r.text.strip()}")
-    return r.text.strip()
+    """
+    Tente d'utiliser le token si repo privé, sinon requête publique.
+    Le token est lu dans la variable d'environnement GITHUB_TOKEN.
+    """
+    token = os.getenv("GITHUB_TOKEN")
+
+    if _is_repo_private(token):
+        debug("Repo privé détecté, utilisation du token pour la requête")
+        if not token:
+            raise RuntimeError("Le dépôt est privé, mais la variable GITHUB_TOKEN n'est pas définie.")
+        headers = {"Authorization": f"token {token}"}
+        url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{VERSION_FILE}"
+        debug(f"Requête avec token vers : {url}")
+        r = requests.get(url, headers=headers, timeout=TIMEOUT)
+        r.raise_for_status()
+        debug(f"Version trouvée sur le repo (privé) : {r.text.strip()}")
+        return r.text.strip()
+    else:
+        debug("Repo public détecté, requête publique")
+        debug(f"Requête vers : {RAW_VERSION_URL_PUBLIC}")
+        r = requests.get(RAW_VERSION_URL_PUBLIC, timeout=TIMEOUT)
+        r.raise_for_status()
+        debug(f"Version trouvée sur le repo (public) : {r.text.strip()}")
+        return r.text.strip()
 
 def _update_with_git():
     print("🔄  Mise à jour via git pull...")
@@ -86,9 +124,6 @@ def _update_with_zip(tmp_dir):
         shutil.move(str(item), dest)
         debug(f"Déplacé : {item} → {dest}")
 
-# ╭─────────────────────────────────────────────────────────╮
-# │                Fonction principale à appeler            │
-# ╰─────────────────────────────────────────────────────────╯
 def check_and_update(auto: bool = True):
     print("🔍  Checking update...", end="", flush=True)
     for _ in range(3):

@@ -170,6 +170,7 @@ except ModuleNotFoundError as e:
 def main():
     # Vérification et mise à jour du logiciel
     check_and_update(auto=True)
+    input("Press Enter to continue...")  # Pause ici
     current_page = 1
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
