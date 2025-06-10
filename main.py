@@ -3,6 +3,7 @@ import sys
 import shutil
 from colorama import init, Fore, Style
 from updater import check_and_update
+from updater import LOCAL_VERSION
 import time
 
 os.system("title iS-Tool Selector")
@@ -54,7 +55,7 @@ banner_art = r"""
  ░        ░                  ░ ░      ░ ░      ░  ░      ░  
 """
 
-version = f"{WHITE}                    [Version : 1.0.0]{PURPLE_NORMAL}"
+version = f"{WHITE}                    [Version : {LOCAL_VERSION}]{PURPLE_NORMAL}"
 
 # Options textes
 option_info_txt = f"{WHITE}Info {PURPLE_DARK}[{WHITE}26{PURPLE_NORMAL}]{PURPLE_NORMAL}"
@@ -168,9 +169,6 @@ except ModuleNotFoundError as e:
     sys.exit(1)
 
 def main():
-    # Vérification et mise à jour du logiciel
-    check_and_update()
-    input("Press Enter to continue...")  # Pause ici
     current_page = 1
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -213,6 +211,8 @@ def main():
             continue
         elif choice == 0: # Exit
             print(f"{PASTEL_PURPLE}[iS-Tools] - {WHITE}Exiting the tool. Goodbye!{RESET}")
+            time.sleep(1)
+            os.system('cls' if os.name == 'nt' else 'clear')
             sys.exit(0)
 
 
@@ -270,4 +270,9 @@ def main():
         os.system("title iS-Tool Selector")
 
 if __name__ == "__main__":
+    if '--update' in sys.argv:
+        print("Mise à jour en cours...")
+        check_and_update()
+        print("Mise à jour terminée.")
+        sys.exit(0)
     main()

@@ -1,8 +1,3 @@
-"""
-updater.py – gère les mises à jour automatiques d’iS‑Tool via GitHub
-© 2025 iSweat‑exe
-"""
-
 import os, sys, io, zipfile, shutil, subprocess, tempfile, time
 from pathlib import Path
 
@@ -18,7 +13,7 @@ REPO          = "iSweat-exe/iS-Tools-CLI"  # owner/repo
 BRANCH        = "main"
 VERSION_FILE  = "Version.txt"               # fichier dans le repo
 TIMEOUT       = 5                           # s
-DEBUG         = True                        # active les logs debug
+DEBUG         = False                        # active les logs debug
 
 RAW_VERSION_URL = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{VERSION_FILE}"
 ZIP_URL         = f"https://github.com/{REPO}/archive/refs/heads/{BRANCH}.zip"
