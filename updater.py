@@ -8,7 +8,7 @@ except ModuleNotFoundError:
     sys.exit(1)
 
 # —— Paramètres ——————————————————————————————————————————
-LOCAL_VERSION = "1.1.1"                     # version actuelle
+LOCAL_VERSION = "1.1.0"                     # version actuelle
 REPO          = "iSweat-exe/iS-Tools-CLI"   # owner/repo
 BRANCH        = "main"
 VERSION_FILE  = "Version.txt"               # fichier dans le repo
