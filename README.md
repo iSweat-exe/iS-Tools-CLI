@@ -12,7 +12,7 @@
 
 ---
 
-## 📦 Présentation
+<h2 align="center">📦 Présentation</h2>
 
 **iS-Tools CLI** est une boîte à outils en ligne de commande conçue pour les passionnés de cybersécurité, les pentesters et curieux de l’OSINT. Il regroupe plusieurs modules utiles, souvent **niche**, issus de mes propres idées, pensées et expérimentations.
 
@@ -34,7 +34,7 @@
 
 ---
 
-## ⚙️ Modules actuellement disponibles
+<h2 align="center">⚙️ Modules actuellement disponibles</h2>
 
 - ✅ IP Tracker  
 - ✅ IP Pinger  
@@ -48,7 +48,7 @@
 
 ---
 
-## 🧰 Informations techniques
+<h2 align="center">🧰 Informations techniques</h2>
 
 - 📁 Langage : Python 3.8+
 - 💻 Compatibilité : Windows / Linux
@@ -57,7 +57,7 @@
 
 ---
 
-## 🖥️ Utilisation
+<h2 align="center">🖥️ Utilisation</h2>
 
 ```bash
 git clone https://github.com/tonpseudo/is-tools-cli.git
@@ -65,11 +65,11 @@ cd is-tools-cli
 python3 is-tool.py
 ```
 
-Utilisez les flèches ou entrez le numéro du module pour naviguer dans le menu.
+Entrez le numéro du module pour naviguer dans le menu.
 
 ---
 
-## 💡 Suggestions bienvenues
+<h2 align="center">💡 Suggestions bienvenues</h2>
 
 Tu veux proposer une idée de module ?  
 Tu as trouvé un bug ou une amélioration possible ?  
@@ -77,21 +77,21 @@ Tu as trouvé un bug ou une amélioration possible ?
 
 ---
 
-## 🎯 Objectif
+<h2 align="center">🎯 Objectif</h2>
 
 Créer un outil tout-en-un, unique, original, utile, souvent niche mais toujours fonctionnel.  
 Une boîte à outils pour tester, apprendre et s’amuser intelligemment avec la cybersécurité.
 
 ---
 
-## 📬 Contact
+<h2 align="center">📬 Contact</h2>
 
 - 👤 Auteur : **iSweat**
 - 💬 Discord : `isweatmc`
 
 ---
 
-## ✅ Version actuelle
+<h2 align="center">✅ Version actuelle</h2>
 
 **v1.0.0** — Release initiale avec les 6 modules principaux fonctionnels.
 
