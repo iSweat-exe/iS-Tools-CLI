@@ -62,7 +62,8 @@ option_info_txt = f"{WHITE}Info {PURPLE_DARK}[{WHITE}26{PURPLE_NORMAL}]{PURPLE_N
 option_next_txt = f"{WHITE}{PURPLE_DARK}[{WHITE}27{PURPLE_NORMAL}] {WHITE}Next{PURPLE_NORMAL}"
 option_previous_txt = f"{WHITE}Previous {PURPLE_DARK}[{WHITE}28{PURPLE_NORMAL}]"
 option_site_txt = f"{WHITE}Site{PURPLE_NORMAL}"
-exit_option_txt = f"{PURPLE_DARK}[{WHITE}0{PURPLE_NORMAL}] {RED}Exit{PURPLE_NORMAL}"
+exit_option_txt = f"{PURPLE_DARK}[{WHITE}0{PURPLE_NORMAL}] {WHITE}Exit{PURPLE_NORMAL}"
+option_updater_txt = f"{PURPLE_DARK}[{WHITE}99{PURPLE_NORMAL}] {WHITE}Update{PURPLE_NORMAL}"
 
 option_01_txt = f"{PURPLE_DARK}[{WHITE}01{PURPLE_NORMAL}] {WHITE}IP Lookup{PURPLE_NORMAL}             "
 option_02_txt = f"{PURPLE_DARK}[{WHITE}02{PURPLE_NORMAL}] {WHITE}IP Pinger{PURPLE_NORMAL}             "
@@ -136,7 +137,7 @@ menu_ascii_1 = f""" ┌─┤ {option_info_txt}                                 
    ├─ {option_06_txt}           ├─ {option_16_txt}           ├─ {option_25_txt}
    ├─ {option_07_txt}           ├─ {option_17_txt}           │
    ├─ {option_08_txt}           ├─ {option_18_txt}           │ 
-   ├─ {option_09_txt}           ├─ {option_19_txt}           │        
+   ├─ {option_09_txt}           ├─ {option_19_txt}           ├─ {option_updater_txt} 
    └─ {option_10_txt}           └─ {option_19_txt}           └─ {exit_option_txt}
 {WHITE}
 """
@@ -153,7 +154,7 @@ menu_ascii_2 = f""" ┌─┤ {option_previous_txt}                             
    ├─ {option_31_txt}           ├─ {option_41_txt}           ├─ {option_51_txt}
    ├─ {option_32_txt}           ├─ {option_42_txt}           │
    ├─ {option_33_txt}           ├─ {option_43_txt}           │ 
-   ├─ {option_34_txt}           ├─ {option_44_txt}           │        
+   ├─ {option_34_txt}           ├─ {option_44_txt}           ├─ {option_updater_txt}        
    └─ {option_35_txt}           └─ {option_45_txt}           └─ {exit_option_txt}
 {WHITE}
 """
@@ -214,6 +215,10 @@ def main():
             time.sleep(1)
             os.system('cls' if os.name == 'nt' else 'clear')
             sys.exit(0)
+        elif choice == 99:  # Update
+            check_and_update()
+            time.sleep(0.5)
+            continue
 
 
         # Page 1 options
@@ -274,5 +279,11 @@ if __name__ == "__main__":
         print("Mise à jour en cours...")
         check_and_update()
         print("Mise à jour terminée.")
+        sys.exit(0)
+    if '--help' in sys.argv:
+        print("Usage: python main.py [--update] [--help]")
+        print("Options:")
+        print("  --update   Met à jour le script.")
+        print("  --help     Affiche cette aide.")
         sys.exit(0)
     main()

@@ -8,12 +8,12 @@ except ModuleNotFoundError:
     sys.exit(1)
 
 # —— Paramètres ——————————————————————————————————————————
-LOCAL_VERSION = "1.1.0"                     # version actuelle
-REPO          = "iSweat-exe/iS-Tools-CLI"  # owner/repo
+LOCAL_VERSION = "1.1.1"                     # version actuelle
+REPO          = "iSweat-exe/iS-Tools-CLI"   # owner/repo
 BRANCH        = "main"
 VERSION_FILE  = "Version.txt"               # fichier dans le repo
 TIMEOUT       = 5                           # s
-DEBUG         = False                        # active les logs debug
+DEBUG         = False                       # active les logs debug
 
 RAW_VERSION_URL = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{VERSION_FILE}"
 ZIP_URL         = f"https://github.com/{REPO}/archive/refs/heads/{BRANCH}.zip"
