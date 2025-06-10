@@ -1,7 +1,7 @@
 
-<p align="center">
+<h1 align="center">
   🚀 iS-Tools CLI ( Work In Progress )
-</p>p
+</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
