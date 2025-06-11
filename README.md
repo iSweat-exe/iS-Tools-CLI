@@ -18,7 +18,7 @@
 <h2 align="center">🖼️ Aperçu Visuel</h2>
 
 <p align="center">
-  <img src="IMG/Tools.png" width="800" alt="Tools" />
+  <img src="IMG/Tools.png" width="810" alt="Tools" />
   <img src="IMG/Updater.png" width="400" alt="Updater" />
   <img src="IMG/Helper.png" width="400" alt="Helper" />
 </p>
