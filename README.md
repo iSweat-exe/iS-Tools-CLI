@@ -116,9 +116,9 @@ Une boîte à outils pour tester, apprendre et s’amuser.
 
 | Version | Date       | Changements principaux                                                                                                  | Statut    |
 |---------|------------|------------------------------------------------------------------------------------------------------------------------|-----------|
-| v1.2.0  | XX/XX/XXXX | 🛠️ Intégration de sqlmap<br>🔑 Bruteforce SSH (port 22)<br>🔑 Bruteforce FTP (port 21)<br>🔗 XSStrike                     | Bientôt...|
-| v1.1.0  | 11/06/2025 | ✨ Système de mise à jour ajouté<br>🙌 Crédits ajoutés<br>📂 Dox Creator<br>🖼️ EXIF Reader<br>👤 Discord User Info<br>🔑 Discord Token<br>🔗 Discord Invite Info<br>✅ Password Checker<br>🔐 Password Generator<br>🚀 Repository public GitHub<br>📜 Licence MIT<br>📝 `README.md` ajouté | Terminé   |
-| v1.0.0  | 07/06/2025 | 🚀 Release initiale avec les 6 modules principaux fonctionnels                                                           | Terminé   |
+| v1.2.0  | XX/XX/XXXX | 🛠️ Intégration de sqlmap<br>🔑 Bruteforce SSH (port 22)<br>🔑 Bruteforce FTP (port 21)<br>🔗 XSStrike                     | ⏳ Bientôt...|
+| v1.1.0  | 11/06/2025 | ✨ Système de mise à jour ajouté<br>🙌 Crédits ajoutés<br>📂 Dox Creator<br>🖼️ EXIF Reader<br>👤 Discord User Info<br>🔑 Discord Token<br>🔗 Discord Invite Info<br>✅ Password Checker<br>🔐 Password Generator<br>🚀 Repository public GitHub<br>📜 Licence MIT<br>📝 `README.md` ajouté | ✅ Terminé   |
+| v1.0.0  | 07/06/2025 | 🚀 Release initiale avec les 6 modules principaux fonctionnels                                                           | ✅ Terminé   |
 
 
 ---
