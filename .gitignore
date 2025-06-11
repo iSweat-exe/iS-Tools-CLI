@@ -4,6 +4,6 @@ __pycache__/
 *.pyo
 *.pyd
 
-# 📄 Fichiers spécifiques à ignorer
+# 📄 Fichiers spécifiques a ignorer
 DEV.md
 ascii.txt
