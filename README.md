@@ -1,5 +1,5 @@
 <h1 align="center">
-  🚀 iS-Tools CLI ( Work In Progress )
+  🚀 iS-Tools CLI - ( Work In Progress )
 </h1>
 
 <p align="center">
@@ -53,9 +53,8 @@
 - ✅ Discord Token  
 - ✅ Discord Invite Info  
 
-> 🔜 À venir : sqlmap, bruteforce SSH (port 22), bruteforce FTP (port 21), XSStrike  
+> 🔜 À venir : sqlmap, bruteforce SSH, bruteforce FTP, XSStrike  
 > *Certains modules listés pourraient ne jamais voir le jour. (À venir)*
-
 
 ---
 
@@ -101,7 +100,7 @@ Tu as trouvé un bug ou une amélioration possible ?
 <h2 align="center">🎯 Objectif</h2>
 
 Créer un outil tout-en-un, unique, original, utile, souvent niche mais toujours fonctionnel.  
-Une boîte à outils pour tester, apprendre et s’amuser.
+Un CLI Tools pour tester, apprendre et s’amuser.
 
 ---
 
