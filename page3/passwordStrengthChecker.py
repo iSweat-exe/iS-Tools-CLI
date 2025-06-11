@@ -1,10 +1,6 @@
-#!/usr/bin/env python3
 # coding: utf-8
-"""
-Password Strength Checker – iS-Tools
-Dépendance : standard library uniquement
-"""
 
+# ─────────── Imports ───────────
 import os, shutil, time, re, math
 
 # ─────────── Couleurs ANSI 256 ───────────
@@ -15,6 +11,7 @@ RED           = '\033[38;5;196m'
 BOLD          = '\033[1m'
 RESET         = '\033[0m'
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
                                                j@@@@@^                                 
            _@v   p@@@@j           j@@@@@@@@@@@@@@@;          |@@@@M   v@}      
@@ -38,6 +35,7 @@ ASCII_ART = r"""
                                     >@@@@@  O@@@@@@@@@@@J                      
                                      p@@@j         ;@@@@^                      """
 
+# ─────────── Utils écriture CLI ─────────
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 
 def print_ascii_art():
@@ -105,7 +103,7 @@ def seconds_to_human(sec):
             return f"{val_str} {name}"
     return "moins d'une seconde"
 
-ATTEMPTS_PER_SECOND = 10_000_000_000  # 10 milliards/s
+ATTEMPTS_PER_SECOND = 10_000_000_000
 
 def strength_report(pwd: str):
     length = len(pwd)
@@ -158,13 +156,10 @@ def strength_report(pwd: str):
         penalties += 25
         suggestions.append("Ajouter types de caractères manquants")
 
-    # Calcul bits effectifs
     effective_bits = max(bits - penalties, 0)
 
-    # Ajustement qualitatif de la robustesse selon variété
     label = entropy_label(effective_bits)
     if variety == 1:
-        # Même si bits est élevé, limiter la robustesse à Faible ou Moyenne
         if effective_bits >= 60:
             label = "Moyenne"
         elif effective_bits >= 36:

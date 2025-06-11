@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import subprocess
 import platform
 import re
@@ -9,7 +9,7 @@ import ipaddress
 import shutil 
 import os
 
-# Couleurs ANSI 256
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_LIGHT = '\033[38;5;177m'
 PURPLE_NORMAL = '\033[38;5;129m'
 WHITE = '\033[38;5;15m'
@@ -17,6 +17,7 @@ GREEN = '\033[38;5;46m'
 RED = '\033[38;5;196m'
 RESET = '\033[0m'
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                    ⠀
                          :**+ :::+*@@.                                                       
@@ -58,8 +59,9 @@ def print_ascii_art():
     for line in ASCII_ART.strip('\n').splitlines():
         padding = max((terminal_width - len(line)) // 2, 0)
         print(' ' * padding + PURPLE_NORMAL + line + RESET)
-        time.sleep(0.025)          # garde l’animation « ligne par ligne »
+        time.sleep(0.025)
 
+# ─── Vérification de la validité d'une IP ─────────────────────────
 def is_valid_ip(ip):
     parts = ip.split('.')
     if len(parts) != 4:
@@ -72,6 +74,7 @@ def is_valid_ip(ip):
             return False
     return True
 
+# ─── Ping une IP une fois ─────────────────────────
 def ping_once(ip):
     """Ping une IP une fois, retourne True si OK, sinon False"""
     system = platform.system().lower()
@@ -86,6 +89,7 @@ def ping_once(ip):
     except Exception:
         return False
 
+# ─── Programme principal ─────────────────────────
 def run():
     clear_screen()
     os.system("title iS-Tools - IP Scanner") 

@@ -1,12 +1,12 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import os
 import time
 import shutil
 from datetime import datetime
 
-# Couleurs ANSI 256 (repris du IP Tracker)
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_VERY_LIGHT = '\033[38;5;201m'
 PURPLE_LIGHT = '\033[38;5;177m'
 PURPLE_NORMAL = '\033[38;5;129m'
@@ -15,6 +15,7 @@ WHITE = '\033[38;5;15m'
 GREEN = '\033[38;5;46m'
 RESET = '\033[0m'
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""                                            
                   .:+*#%%#####*++++-.             
                 :#%%*+*+-.....                    
@@ -45,8 +46,8 @@ ASCII_ART = r"""
                     :+*#%%%@%%%%%%%%%%%%#:.       
                       ..:==+*#%#*=-:.:-+***:."""
 
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+# ─────────── Utils écriture CLI ─────────
+def clear_screen(): os.system('cls' if os.name == 'nt' else 'clear')
 
 def print_ascii_art():
     terminal_width = shutil.get_terminal_size((80, 20)).columns
@@ -62,6 +63,7 @@ def get_input(prompt):
         print(f"{PURPLE_LIGHT}[iS-Tool Info]{WHITE} - Retour au menu principal...{RESET}")
         exit()
 
+# ─────────── Programme principal ─────────
 def run():
     clear_screen()
     os.system("title iS-Tools - Dox Creator") 

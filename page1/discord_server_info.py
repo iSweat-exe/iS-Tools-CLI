@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import requests
 import re
 import os
 import time
 import shutil
 
-# Couleurs ANSI 256
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_VERY_LIGHT = '\033[38;5;201m'  # Lavande très clair
 PURPLE_LIGHT = '\033[38;5;177m'       # Lavande clair
 PURPLE_NORMAL = '\033[38;5;129m'      # Violet standard
@@ -17,6 +17,7 @@ RED = '\033[38;5;196m'
 BOLD = '\033[1m'
 RESET = '\033[0m'
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
                                               @@@@                @%@@                                      
                                        @@@@@@@@@@@@               @@@@@@@@@@%                               
@@ -55,13 +56,6 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def extract_code(invite_url):
-    """
-    Extrait le code d'invitation Discord depuis une URL.
-    Exemples valides :
-    - https://discord.gg/abcdef
-    - discord.gg/abcdef
-    - abcdef (juste le code)
-    """
     pattern = re.compile(r'(?:https?://)?(?:www\.)?discord(?:app)?\.gg/([a-zA-Z0-9\-]+)')
     match = pattern.search(invite_url)
     if match:
@@ -156,6 +150,7 @@ def print_invite_info(data, code):
     else:
         print(f"\n{RED}[Info]{RESET} Pas d'inviteur trouvé pour cette invitation.")
 
+# ─────────── Programme principal ─────────
 def run():
     clear_screen()
     os.system("title iS-Tools - Discord Invite Info" if os.name == 'nt' else '')

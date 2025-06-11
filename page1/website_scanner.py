@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import socket, ssl, requests, ipaddress, json, time, shutil, sys, urllib3, warnings, os
 
 warnings.filterwarnings("ignore", category=urllib3.exceptions.InsecureRequestWarning)
 
-# ─── Couleurs ANSI 256 ────────────────────────────────────────────────────────
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_LIGHT  = '\033[38;5;177m'
 PURPLE_NORMAL = '\033[38;5;129m'
 WHITE         = '\033[38;5;15m'
@@ -13,7 +13,7 @@ RED           = '\033[38;5;196m'
 RESET         = '\033[0m'
 BOLD          = '\033[1m'
 
-# ─── ASCII art en un seul bloc (animation conservée) ─────────────────────────
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
 
                                                             >@@|                                                
@@ -56,6 +56,7 @@ def print_ascii_art():
         print(' ' * pad + PURPLE_NORMAL + ln + RESET)
         time.sleep(0.025)
 
+# ────── Vérifications IP / DNS ──────
 def is_valid_ip(ip: str) -> bool:
     try:
         ipaddress.ip_address(ip)
@@ -63,6 +64,7 @@ def is_valid_ip(ip: str) -> bool:
     except ValueError:
         return False
 
+# ────── Résolution de domaine ──────
 def resolve_domain(domain: str) -> str | None:
     """Renvoie l’adresse IPv4 du domaine ou None si échec."""
     try:
@@ -70,6 +72,7 @@ def resolve_domain(domain: str) -> str | None:
     except socket.gaierror:
         return None
 
+# ────── Interrogation de l’IP ──────
 def fetch_ip_info(ip: str) -> dict | None:
     """Interroge ipinfo.io pour avoir l’ISP / ORG / AS…"""
     try:
@@ -78,7 +81,7 @@ def fetch_ip_info(ip: str) -> dict | None:
     except requests.RequestException:
         return None
 
-# Ports fréquents + étiquette
+# ────── Ports communs ──────
 COMMON_PORTS = {
     21:  "FTP",
     22:  "SSH",
@@ -93,6 +96,7 @@ COMMON_PORTS = {
     8443:"HTTPS‑Alt",
 }
 
+# ────── Scan des ports ──────
 def scan_ports(ip: str, timeout: float = 0.5) -> list[str]:
     """Renvoie une liste "port/PROTO" ouverts parmi COMMON_PORTS."""
     open_ports = []
@@ -103,23 +107,22 @@ def scan_ports(ip: str, timeout: float = 0.5) -> list[str]:
                 open_ports.append(f"{port}/{proto}")
     return open_ports
 
+# ────── Vérification du statut HTTP ──────
 def http_status(url: str) -> int | None:
-    """Retourne le code‑statut HTTP (GET) ou None si unreachable."""
     try:
         r = requests.get(url, timeout=6, allow_redirects=True, verify=False)
         return r.status_code
     except requests.RequestException:
         return None
 
-# ─── Affichage des résultats ─────────────────────────────────────────────────
+# ────── Affichage des résultats ──────
 def show_result(data: dict):
-    """Affiche les données formatées avec la déco [+]."""
     label_w = max(len(key) for key in data) + 2
     for k, v in data.items():
         val = v if v else "Non disponible"
         print(f"{PURPLE_LIGHT}├─ {WHITE}[{PURPLE_LIGHT}+{WHITE}]{PURPLE_LIGHT} {k.ljust(label_w)}: {WHITE}{val}{RESET}")
 
-# ─── Point d’entrée ──────────────────────────────────────────────────────────
+# ────── Programme principal ──────
 def run():
     clear_screen()
     os.system("title iS-Tools - Website Scanner") 

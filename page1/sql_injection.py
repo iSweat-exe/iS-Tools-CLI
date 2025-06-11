@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import requests
 import urllib.parse
 import time
@@ -9,7 +9,7 @@ import re
 import random
 import os
 
-# ─── Couleurs ─────────────────────────────────────────
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_LIGHT = '\033[38;5;177m'
 PURPLE = '\033[38;5;129m'
 WHITE = '\033[38;5;15m'
@@ -17,7 +17,7 @@ RED = '\033[38;5;196m'
 GREEN = '\033[38;5;40m'
 RESET = '\033[0m'
 
-# ─── ASCII ART ────────────────────────────────────────
+# ─────────── ASCII Art ─────────
 ASCII = r"""
                                                                                    ^                      
                                                                                  J@@M                     
@@ -50,11 +50,13 @@ ASCII = r"""
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+# ─── Impression centrée, ligne par ligne (animation) ─────────────────────────
 def animated_ascii():
     for line in ASCII.strip().split('\n'):
         print(f"{PURPLE}{line}{RESET}")
         time.sleep(0.02)
 
+# ─── Classe SQLiScanner ──────────────────────────────────────────────────────
 class SQLiScanner:
     def __init__(self):
         # Payloads: classique + erreurs + basiques UNION + time-based simples
@@ -216,6 +218,7 @@ class SQLiScanner:
             print(f"\n{RED}[!] Scan interrupted by user. Returning to main menu.{RESET}")
             return
 
+# ─── Programme principal ─────────────────────────────────────────────────────
 def run():
     clear_screen()
     os.system("title iS-Tools - SQL Injection Scanner") 

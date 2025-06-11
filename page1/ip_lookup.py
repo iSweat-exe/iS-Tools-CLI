@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import socket
 import requests
 import ipaddress
@@ -9,7 +9,7 @@ import time
 import shutil
 import os
 
-# Couleurs ANSI 256
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_VERY_LIGHT = '\033[38;5;201m'  # Lavande très clair
 PURPLE_LIGHT = '\033[38;5;177m'       # Lavande clair
 PURPLE_NORMAL = '\033[38;5;129m'      # Violet standard
@@ -20,6 +20,7 @@ RED = '\033[38;5;196m'
 BOLD = '\033[1m'
 RESET = '\033[0m'
 
+# ─────────── Countries ─────────
 COUNTRY_NAMES = {
     "AF": "Afghanistan", "AL": "Albanie", "DZ": "Algérie", "AS": "Samoa américaines", "AD": "Andorre", "AO": "Angola",
     "AI": "Anguilla", "AQ": "Antarctique", "AG": "Antigua-et-Barbuda", "AR": "Argentine", "AM": "Arménie", "AW": "Aruba",
@@ -64,6 +65,7 @@ COUNTRY_NAMES = {
     "EH": "Sahara occidental", "YE": "Yémen", "ZM": "Zambie", "ZW": "Zimbabwe"
 }
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                    ⠀
                          :**+ :::+*@@.                                                       
@@ -106,7 +108,7 @@ def print_ascii_art():
     for line in ASCII_ART.strip('\n').splitlines():
         padding = max((terminal_width - len(line)) // 2, 0)
         print(' ' * padding + PURPLE_NORMAL + line + RESET)
-        time.sleep(0.025)          # garde l’animation « ligne par ligne »
+        time.sleep(0.025)
 
 def is_valid_ip(ip):
     try:
@@ -177,6 +179,7 @@ def print_ip_info(data):
             print(f"{PURPLE_LIGHT}├─ {WHITE}[{PURPLE_LIGHT}+{WHITE}]{PURPLE_LIGHT} {aligned_label}: {WHITE}{value}{RESET}")
     print(f"{PURPLE_LIGHT}{BOLD}└─────────────────────────────────────────────────┘{RESET}")
 
+# ─────────── Programme principal ─────────
 def run():
     clear_screen()
     os.system("title iS-Tools - IP Lookup") 

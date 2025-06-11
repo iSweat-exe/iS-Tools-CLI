@@ -1,12 +1,12 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import requests
 import os
 import time
 import shutil
 
-# Couleurs ANSI 256
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_VERY_LIGHT = '\033[38;5;201m'
 PURPLE_LIGHT = '\033[38;5;177m'
 PURPLE_NORMAL = '\033[38;5;129m'
@@ -16,6 +16,7 @@ GREEN = '\033[38;5;82m'
 BOLD = '\033[1m'
 RESET = '\033[0m'
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
                                               @@@@                @%@@                                      
                                        @@@@@@@@@@@@               @@@@@@@@@@%                               
@@ -43,9 +44,11 @@ ASCII_ART = r"""
                                          @@                              @@                         
 """
 
+# ─────────── Utils écriture CLI ─────────
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+# ─── Impression centrée, ligne par ligne (animation) ─────────────────────────
 def print_ascii_art():
     terminal_width = shutil.get_terminal_size((80, 20)).columns
     for line in ASCII_ART.strip('\n').splitlines():
@@ -53,11 +56,13 @@ def print_ascii_art():
         print(' ' * padding + PURPLE_NORMAL + line + RESET)
         time.sleep(0.02)
 
+# ─── Impression centrée du texte ─────────────────────────
 def print_centered(text):
     width = shutil.get_terminal_size((80, 20)).columns
     for line in text.splitlines():
         print(line.center(width))
 
+# ─── Fonction pour récupérer les données utilisateur ─────────────────────────
 def fetch_user_data(token):
     headers = {
         "Authorization": token,
@@ -75,6 +80,7 @@ def fetch_user_data(token):
         print(f"{RED}[Erreur]{RESET} {e}")
     return None
 
+# ─── Fonction pour récupérer les serveurs de l'utilisateur ────────────────────
 def fetch_user_guilds(token):
     headers = {
         "Authorization": token,
@@ -88,6 +94,7 @@ def fetch_user_guilds(token):
         pass
     return None
 
+# ─── Fonction pour déterminer le statut Nitro ────────────────────────────────
 def nitro_status(premium_type: int | None) -> str:
     match premium_type:
         case 1:  return "Nitro Classic"
@@ -95,9 +102,11 @@ def nitro_status(premium_type: int | None) -> str:
         case 3:  return "Nitro Basic"
         case _:  return "None"
 
+# ─── Fonction pour convertir la couleur d'accent en hexadécimal ──────────────
 def accent_to_hex(accent: int | None) -> str:
     return f"#{accent:06X}" if accent else "None"
 
+# ─── Fonction pour formater les badges ───────────────────────────────────────
 def format_badges(flags):
     badge_map = {
         1 << 0: "Discord Employee",
@@ -114,6 +123,7 @@ def format_badges(flags):
     badges = [name for bit, name in badge_map.items() if flags & bit]
     return badges if badges else ["None"]
 
+# ─── Fonction pour afficher les informations utilisateur ──────────────────────
 def print_user_info(data: dict, token: str):
     print(f"{PURPLE_LIGHT}{BOLD}┌────────────────────────────────────── {WHITE}Discord User Info{PURPLE_LIGHT}{BOLD} ──────────────────────────────────────┐{RESET}")
 
@@ -134,6 +144,7 @@ def print_user_info(data: dict, token: str):
 
     print(f"{PURPLE_LIGHT}└────────────────────────────────────────────────────────────────────────────────────────────────┘{RESET}")
 
+# ─────────── Programme principal ─────────
 def run():
     clear_screen()
     print_ascii_art()
@@ -155,9 +166,7 @@ def run():
         if guilds:
             print(f"{PURPLE_LIGHT}{BOLD}┌─────────────────────────────────── {WHITE}Serveurs du compte ({len(guilds)}){PURPLE_LIGHT}{BOLD} ────────────────────────────────────┐{RESET}")
             
-            max_name_length = 32  # Ajustable selon la taille du terminal
-
-            # Trie les serveurs : admins d'abord, puis le reste par ordre alphabétique
+            max_name_length = 32
             sorted_guilds = sorted(guilds, key=lambda g: (
                 not bool(int(g.get("permissions", 0)) & 0x00000008),
                 g.get("name", "").lower()
@@ -168,11 +177,8 @@ def run():
                 server_id = g.get("id", "N/A")
                 admin = int(g.get("permissions", 0))
                 is_admin = bool(admin & 0x00000008)
-
-                # Tronque le nom s'il est trop long
                 display_name = name if len(name) <= max_name_length else name[:max_name_length - 3] + "..."
 
-                # Formate la ligne avec alignement
                 line = f"{PURPLE_LIGHT}├─ {WHITE}[{PURPLE_LIGHT}+{WHITE}]{PURPLE_LIGHT} {display_name.ljust(max_name_length)}  ({WHITE}{server_id}{PURPLE_LIGHT})"
                 if is_admin:
                     line += f"  {RED}[ADMIN]{RESET}"

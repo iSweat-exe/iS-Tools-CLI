@@ -1,8 +1,9 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import os, shutil, time, random
 
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_LIGHT  = '\033[38;5;177m'
 PURPLE_NORMAL = '\033[38;5;129m'
 WHITE         = '\033[38;5;15m'
@@ -11,6 +12,7 @@ GREEN         = '\033[38;5;82m'
 BOLD          = '\033[1m'
 RESET         = '\033[0m'
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
                                                j@@@@@^                                 
            _@v   p@@@@j           j@@@@@@@@@@@@@@@;          |@@@@M   v@}      
@@ -35,6 +37,7 @@ ASCII_ART = r"""
                                      p@@@j         ;@@@@^                     
 """
 
+# ─────────── Utils écriture CLI ─────────
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 

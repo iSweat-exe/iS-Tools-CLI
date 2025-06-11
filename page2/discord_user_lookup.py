@@ -1,10 +1,6 @@
-#!/usr/bin/env python3
 # coding: utf-8
-"""
-Discord User Lookup – iS‑Tools (sans token)
-Dépendances : requests  (pip install requests)
-"""
 
+# ─────────── Imports ───────────
 import os, shutil, time, datetime, requests, json
 
 # ─────────── Couleurs ANSI 256 ───────────
@@ -15,7 +11,7 @@ RED           = '\033[38;5;196m'
 BOLD          = '\033[1m'
 RESET         = '\033[0m'
 
-# ─────────── ASCII Art (same look) ───────
+# ─────────── ASCII Art ───────────
 ASCII_ART = r"""
                                               @@@@                @%@@                                      
                                        @@@@@@@@@@@@               @@@@@@@@@@%                               
@@ -112,16 +108,13 @@ def print_user(d):
 
     flags     = d.get("public_flags", 0)
     flags_arr = d.get("public_flags_array", [])
-
-    # Combine les badges, retire les doublons même s'ils ont des écritures différentes
     raw_badges = badges_from_flags(flags) + flags_arr
 
     unique_badges = {}
     for badge in raw_badges:
-        # clé = seulement lettres/chiffres en minuscules
         key = "".join(ch for ch in badge.lower() if ch.isalnum())
         if key not in unique_badges:
-            unique_badges[key] = badge   # on garde la 1ʳᵉ version lisible
+            unique_badges[key] = badge
 
     badge_list = sorted(unique_badges.values())
 

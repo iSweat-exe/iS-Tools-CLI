@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# ─────────── Imports ───────────
 import json
 import requests
 import shutil
@@ -8,7 +8,7 @@ import time
 import os
 import sys
 
-# ─── Couleurs ANSI 256 ────────────────────────────────────────────────
+# ─────────── Couleurs ANSI 256 ───────────
 PURPLE_LIGHT  = '\033[38;5;177m'
 PURPLE_NORMAL = '\033[38;5;129m'
 WHITE         = '\033[38;5;15m'
@@ -18,7 +18,7 @@ YELLOW        = '\033[38;5;226m'
 RESET         = '\033[0m'
 BOLD          = '\033[1m'
 
-# ─── ASCII art ────────────────────────────────────────────────────────
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                    ⠀
                          :**+ :::+*@@.                                                       
@@ -120,3 +120,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print(f"\n{YELLOW}[Info]{RESET} Interruption utilisateur. Retour au menu principal...")
         sys.exit(0)
+
+# Thanks to Fernandez Ezequiel ( twitter:@capitan_alfa ) for the exploit code
+# This script is a simple DVR credentials exploit for devices vulnerable to CVE-2018-9995.
+# It retrieves user credentials from a vulnerable DVR device by sending a crafted HTTP request.

@@ -1,25 +1,22 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import hashlib, base64, bcrypt, sys, time, shutil, os
 
-# ─── Couleurs ANSI ───────────────────────────────────────────────────────────
-PASTEL_PINK = '\033[38;5;213m'  # Rose pastel
-PASTEL_PURPLE = '\033[38;5;177m'  # Violet pastel
-PURPLE_VERY_LIGHT = '\033[38;5;201m'  # Lavande très clair
-PURPLE_LIGHT = '\033[38;5;177m'   # Lavande clair
-PURPLE_NORMAL = '\033[38;5;129m'  # Violet standard
-PURPLE_DARK = '\033[38;5;90m'     # Violet foncé
-PURPLE_VERY_DARK = '\033[38;5;54m'    # Lavande très foncé
-
-RED = '\033[38;5;196m'  # Rouge
-
-# Autres couleurs et styles (ANSI 256)
+# ─────────── Couleurs ANSI 256 ───────────
+PASTEL_PINK = '\033[38;5;213m'
+PASTEL_PURPLE = '\033[38;5;177m'
+PURPLE_VERY_LIGHT = '\033[38;5;201m'
+PURPLE_LIGHT = '\033[38;5;177m'
+PURPLE_NORMAL = '\033[38;5;129m'
+PURPLE_DARK = '\033[38;5;90m'
+PURPLE_VERY_DARK = '\033[38;5;54m'
+RED = '\033[38;5;196m'
 WHITE = '\033[38;5;15m'
 RESET = '\033[0m'
 BOLD = '\033[1m'
 
-# ─── ASCII Art ────────────────────────────────────────────────────────────────
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
                                                j@@@@@^                                 
            _@v   p@@@@j           j@@@@@@@@@@@@@@@;          |@@@@M   v@}      

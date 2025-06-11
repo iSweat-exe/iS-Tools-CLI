@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
 # ─────────── Imports ───────────
@@ -60,10 +59,6 @@ def print_ascii_art():
         time.sleep(0.025)
 
 def line(label, value, label_w=15):
-    """
-    Imprime une ligne au format :
-    ├─ [+] <label> : <value>
-    """
     print(f"{PURPLE_LIGHT}├─ {WHITE}[{PURPLE_LIGHT}+{WHITE}] "
           f"{label.ljust(label_w)} : {WHITE}{value}{RESET}")
 

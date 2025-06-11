@@ -1,16 +1,16 @@
-#!/usr/bin/env python3
 # coding: utf-8
 
+# ─────────── Imports ───────────
 import subprocess
 import platform
 import re
 import time
-import shutil  # <- pour la taille du terminal
+import shutil
 import os
 
-# Couleurs ANSI 256
-PURPLE_LIGHT = '\033[38;5;177m'       # Lavande clair
-PURPLE_NORMAL = '\033[38;5;129m'      # Violet standard
+# ─────────── Couleurs ANSI 256 ───────────
+PURPLE_LIGHT = '\033[38;5;177m'      
+PURPLE_NORMAL = '\033[38;5;129m'     
 WHITE = '\033[38;5;15m'
 GREEN = '\033[38;5;46m'
 RED = '\033[38;5;196m'
@@ -18,6 +18,7 @@ YELLOW = '\033[38;5;226m'
 RESET = '\033[0m'
 BOLD = '\033[1m'
 
+# ─────────── ASCII Art ─────────
 ASCII_ART = r"""
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                    ⠀
                          :**+ :::+*@@.                                                       
@@ -59,8 +60,9 @@ def print_ascii_art():
     for line in ASCII_ART.strip('\n').splitlines():
         padding = max((terminal_width - len(line)) // 2, 0)
         print(' ' * padding + PURPLE_NORMAL + line + RESET)
-        time.sleep(0.025)          # garde l’animation « ligne par ligne »
+        time.sleep(0.025)
 
+# ─── Vérification de la validité de l'adresse IP ─────────────────────────
 def is_valid_ip(ip):
     parts = ip.split('.')
     if len(parts) != 4:
@@ -73,6 +75,7 @@ def is_valid_ip(ip):
             return False
     return True
 
+# ─── Fonction de ping unique ─────────────────────────
 def ping_once(ip):
     system = platform.system().lower()
     if system == 'windows':
@@ -109,6 +112,7 @@ def ping_once(ip):
     except Exception:
         return None
 
+# ─────────── Programme principal ─────────
 def run():
     clear_screen()
     os.system("title iS-Tools - IP Pinger")
