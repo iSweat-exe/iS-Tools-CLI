@@ -1,2 +1,9 @@
-# Python Cache
+# 🐍 Python cache
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 📄 Fichiers spécifiques à ignorer
+DEV.md
+ascii.txt
