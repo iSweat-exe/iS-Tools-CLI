@@ -3,10 +3,24 @@
 </h1>
 
 <p align="center">
+  <img src="IMG/Logo (No BG).png" width="500" alt="Logo iS-Tools" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
   <img src="https://img.shields.io/badge/status-WIP-orange.svg" />
   <img src="https://img.shields.io/badge/python-3.8%2B-blue.svg" />
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey.svg" />
+</p>
+
+---
+
+<h2 align="center">🖼️ Aperçu Visuel</h2>
+
+<p align="center">
+  <img src="IMG/Tools.png" width="600" alt="Tools" />
+  <img src="IMG/Updater.png" width="400" alt="Updater" />
+  <img src="IMG/Helper.png" width="400" alt="Helper" />
 </p>
 
 ---
@@ -113,11 +127,11 @@ Un CLI Tools pour tester, apprendre et s’amuser.
 
 <h2 align="center">✅ Version actuelle</h2>
 
-| Version | Date       | Changements principaux                                                                                                  | Statut |
-|---------|------------|------------------------------------------------------------------------------------------------------------------------|-----------|
-| v1.2.0  | XX/XX/XXXX | 🛠️ Intégration de sqlmap<br>🔑 Bruteforce SSH (port 22)<br>🔑 Bruteforce FTP (port 21)<br>🔗 XSStrike | ⏳ Bientôt... |
-| v1.1.0  | 11/06/2025 | ✨ Système de mise à jour ajouté<br>🙌 Crédits ajoutés<br>📂 Dox Creator<br>🖼️ EXIF Reader<br>👤 Discord User Info<br>🔑 Discord Token<br>🔗 Discord Invite Info<br>✅ Password Checker<br>🔐 Password Generator<br>🚀 Repository public GitHub<br>📜 Licence MIT<br>📝 `README.md` ajouté | ✅ Terminé |
-| v1.0.0  | 07/06/2025 | 🚀 Release initiale avec les 6 modules principaux fonctionnels | ✅ Terminé |
-
+| Version | Date       | Changements principaux                                                                                                   | Statut         | Download |
+|---------|------------|---------------------------------------------------------------------------------------------------------------------------|----------------|----------|
+| v1.2.0  | XX/XX/XXXX | 🛠️ Intégration de sqlmap<br>🔑 Bruteforce SSH (port 22)<br>🔑 Bruteforce FTP (port 21)<br>🔗 XSStrike           | ⏳ Bientôt...   | [Download](#) |
+| v1.1.0  | 11/06/2025 | ✨ Système de mise à jour ajouté<br>🙌 Crédits ajoutés<br>📂 Dox Creator<br>🖼️ EXIF Reader<br>👤 Discord User Info<br>🔑 Discord Token<br>🔗 Discord Invite Info<br>✅ Password Checker<br>🔐 Password Generator<br>🚀 Repository public GitHub<br>📜 Licence MIT<br>📝 `README.md` ajouté | ✅ Terminé     | [Download](#) |
+| v1.0.0  | 07/06/2025 | 🚀 Release initiale avec les 6 modules principaux fonctionnels                                                            | ✅ Terminé     | [Download](#) |
 
 ---
+
